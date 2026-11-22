@@ -76,24 +76,6 @@ bootcmd:
 # Create ansible user for running playbooks
 # This allows running ansible commands as 'ansible' user with SSH keys
 write_files:
-  - path: /etc/ansible/ansible.cfg
-    owner: root:root
-    permissions: '0644'
-    content: |
-      [defaults]
-      inventory = /etc/ansible/inventory.ini
-      host_key_checking = False
-      timeout = 30
-      remote_user = debian
-      ask_pass = False
-      private_key_file = ~/.ssh/id_rsa
-
-      [privilege_escalation]
-      become = True
-      become_method = sudo
-      become_user = root
-      become_ask_pass = False
-
   # Semaphore configuration
   - path: /etc/semaphore/config.json
     owner: root:root
@@ -140,6 +122,7 @@ write_files:
       RestartSec=10
       Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
       Environment="HOME=/home/semaphore"
+      Environment="ANSIBLE_CONFIG=/etc/ansible/ansible.cfg"
       NoNewPrivileges=true
       PrivateTmp=true
       TimeoutStartSec=30
@@ -189,7 +172,7 @@ runcmd:
   - sudo -u semaphore /usr/bin/semaphore migrate --config /etc/semaphore/config.json
 
   # Create admin user
-  - sudo -u semaphore /usr/bin/semaphore user add --email "admin@lithium.local" --name "Admin User" --login "admin" --password "${semaphore_admin_password}" --admin --config /etc/semaphore/config.json 2>/dev/null || true
+  - sudo -u semaphore /usr/bin/semaphore user add --email "admin@flo-home.local" --name "Admin User" --login "admin" --password "${semaphore_admin_password}" --admin --config /etc/semaphore/config.json 2>/dev/null || true
 
   # Enable and start Semaphore service
   - systemctl daemon-reload
@@ -198,4 +181,3 @@ runcmd:
 
 # Final message
 final_message: "Ansible control node booted successfully. Instance uptime: $UPTIME seconds"
-

@@ -1,15 +1,15 @@
-# Lithium Infrastructure
+# Flo@Home Infrastructure
 
 A complete infrastructure-as-code solution for deploying and managing a Kubernetes cluster on Proxmox with comprehensive CI/CD, monitoring, and networking capabilities.
 
 ## Purpose
 
-This repository contains the infrastructure code needed to bootstrap and manage the Lithium infrastructure stack. It automates the provisioning of VMs, Kubernetes cluster setup, and deployment of supporting services like ArgoCD, Prometheus, Grafana, and Traefik.
+This repository contains the infrastructure code needed to bootstrap and manage the Flo@Home infrastructure stack. It automates the provisioning of VMs, Kubernetes cluster setup, and deployment of supporting services like ArgoCD, Prometheus, Grafana, and Traefik.
 
 ## Directory Structure
 
 ```
-lithium-infra/
+flo@home-infra/
 ├── ansible/              # VM and Kubernetes configuration via Ansible playbooks
 │   ├── playbooks/        # Main playbooks (k8s setup, GitHub runners, etc.)
 │   └── roles/            # Reusable Ansible roles
