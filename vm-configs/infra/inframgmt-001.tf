@@ -45,10 +45,10 @@ module "ansible_vm" {
     semaphore_cookie_hash            = base64encode(random_password.semaphore_cookie_hash.result)
     semaphore_cookie_encryption      = base64encode(random_password.semaphore_cookie_encryption.result)
     semaphore_access_key_encryption  = base64encode(random_password.semaphore_access_key_encryption.result)
+    ansible_vault_password           = var.ansible_vault_password
   }
 
   pm_node = var.pm_node
 
   depends_on = [module.proxy_vm]
 }
-

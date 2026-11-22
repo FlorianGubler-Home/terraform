@@ -76,6 +76,13 @@ bootcmd:
 # Create ansible user for running playbooks
 # This allows running ansible commands as 'ansible' user with SSH keys
 write_files:
+  # Ansible vault password
+  - path: /etc/ansible/.vaultpass
+    owner: root:root
+    permissions: '0600'
+    content: |
+      ${ansible_vault_password}
+
   # Semaphore configuration
   - path: /etc/semaphore/config.json
     owner: root:root

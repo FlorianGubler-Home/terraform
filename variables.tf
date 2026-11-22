@@ -33,3 +33,9 @@ variable "semaphore_db_password" {
   sensitive   = true
   description = "Semaphore database user password"
 }
+
+variable "ansible_vault_password" {
+  type        = string
+  sensitive   = true
+  description = "Password used by Ansible to decrypt vaulted variables"
+}

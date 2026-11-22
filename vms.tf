@@ -28,6 +28,7 @@ module "infra_vms" {
   semaphore_version = var.semaphore_version
   semaphore_admin_password = var.semaphore_admin_password
   semaphore_db_password = var.semaphore_db_password
+  ansible_vault_password = var.ansible_vault_password
 
   depends_on = [proxmox_virtual_environment_sdn_applier.sdn_applier]
 }
