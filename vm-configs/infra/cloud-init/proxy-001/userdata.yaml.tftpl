@@ -75,7 +75,7 @@ write_files:
       acl debian_repos dstdomain deb.debian.org security.debian.org
 
       # Destination: Kubernetes Package Registries
-      acl k8s_repos dstdomain .k8s.io pkg.kubernetes.io storage.googleapis.com .opensuse.org .gwdg.de .helm.sh .pkg.dev
+      acl k8s_repos dstdomain .k8s.io pkg.kubernetes.io storage.googleapis.com .opensuse.org .gwdg.de .helm.sh .pkg.dev quay.io
 
       # Destination: GitHub Action Runner URLs
       acl github_urls dstdomain .github.com .githubusercontent.com github-cloud.s3.amazonaws.com github-production-release-asset-2e65be.s3.amazonaws.com
